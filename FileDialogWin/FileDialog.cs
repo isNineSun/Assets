@@ -9,50 +9,43 @@ using UnityEngine.UI;
 [AddComponentMenu("Windows/FileDialog")]
 public class FileDialog : MonoBehaviour
 {
-    public Text FilePath_UI;
-    // ����һ��ͳһ�ĵ��ýӿ�
-    public void OpenFilePanel()
+    public string OpenFilePanel(string title, string defaultPath, string extension)
     {
-        //���巵�ص��ļ�·��
         string selectedFilePath = string.Empty;
 #if UNITY_EDITOR
-        // �༭������
-        selectedFilePath = EditorUtility.OpenFilePanel("Select a file", "", "");
+        selectedFilePath = EditorUtility.OpenFilePanel(title, defaultPath, extension);
 #elif UNITY_STANDALONE_WIN
-        // Windows����
-        selectedFilePath = OpenWindowsFileDialog("Select a file", "", "");
+        //For Windows
+        selectedFilePath = OpenWindowsFileDialog(title, defaultPath, extension);
 #endif
 
-        // ����ѡ�е��ļ�·��
         if (!string.IsNullOrEmpty(selectedFilePath))
         {
-            FilePath_UI.text = selectedFilePath;
             Debug.Log("Selected file: " + selectedFilePath);
         }
         else
         {
             Debug.Log("File selection canceled.");
         }
+
+        return selectedFilePath;
     }
 
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
-    // Windowsƽ̨���ļ��Ի���
+    //For Windows
     [DllImport("Comdlg32.dll", SetLastError = true, CharSet = CharSet.Auto)]
     private static extern bool GetOpenFileName([In, Out] FileDialogWin.OPENFILENAME ofn);
 
     private string OpenWindowsFileDialog(string title, string defaultPath, string extension)
     {
-        //Debug.Log("����");
         FileDialogWin.OPENFILENAME ofn = new FileDialogWin.OPENFILENAME();
         ofn.structSize = System.Runtime.InteropServices.Marshal.SizeOf(ofn);
-        ofn.filter = "G-code Files\0*.gcode\0All Files\0*.*\0\0";
+        ofn.filter = $"{extension}\0*.{extension}\0All Files\0*.*\0\0";
         ofn.file = new string(new char[256]);
         ofn.maxFile = ofn.file.Length;
         ofn.title = title;
         ofn.initialDir = defaultPath;
-
-        //Debug.Log(GetOpenFileName(ofn));
 
         if (GetOpenFileName(ofn))
         {
