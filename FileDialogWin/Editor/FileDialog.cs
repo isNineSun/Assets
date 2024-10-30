@@ -8,6 +8,13 @@ using UnityEngine.UI;
 
 public class FileDialog : MonoBehaviour
 {
+    /// <summary>
+    /// This function opens the folder selection interface and returns the path of the selected file.
+    /// </summary>
+    /// <param name="title">It represents the default file name or file path displayed in the file dialog.</param>
+    /// <param name="defaultPath">Default path</param>
+    /// <param name="extension">File filter, in the form of "txt" or "md", does not contain wild matches</param>
+    /// <returns>Returns a file path.</returns>
     public string OpenFilePanel(string title, string defaultPath, string extension)
     {
         string selectedFilePath = string.Empty;
