@@ -1,0 +1,23 @@
+{
+    "name": "com.ninesun.openfiledialogwin",
+    "displayName": "Open File Dialog Windows",
+    "version": "3.4.1",
+    "description": "This package is designed to invoke the native Windows folder selection dialog and can be used in both Unity editor and native Windows environments.",
+    "keywords": [
+        "Windows",
+        "FileDialog",
+        "openfiledialogwin",
+        "windows file"
+    ],
+    "category": "Windows-FileDialog",
+    "files": [
+        "/LICENSE",
+        "/LICENSE.meta",
+        "/README.md",
+        "/README.md.meta",
+        "/package.json",
+        "/package.json.meta",
+        "/FileDialogWin",
+        "/FileDialogWin.meta"
+    ]
+}
