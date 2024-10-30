@@ -6,23 +6,24 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
+[AddComponentMenu("Windows/FileDialog")]
 public class FileDialog : MonoBehaviour
 {
     public Text FilePath_UI;
-    // Áô³öÒ»¸öÍ³Ò»µÄµ÷ÓÃ½Ó¿Ú
+    // ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í³Ò»ï¿½Äµï¿½ï¿½Ã½Ó¿ï¿½
     public void OpenFilePanel()
     {
-        //¶¨Òå·µ»ØµÄÎÄ¼þÂ·¾¶
+        //ï¿½ï¿½ï¿½å·µï¿½Øµï¿½ï¿½Ä¼ï¿½Â·ï¿½ï¿½
         string selectedFilePath = string.Empty;
 #if UNITY_EDITOR
-        // ±à¼­Æ÷»·¾³
+        // ï¿½à¼­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         selectedFilePath = EditorUtility.OpenFilePanel("Select a file", "", "");
 #elif UNITY_STANDALONE_WIN
-        // Windows»·¾³
+        // Windowsï¿½ï¿½ï¿½ï¿½
         selectedFilePath = OpenWindowsFileDialog("Select a file", "", "");
 #endif
 
-        // ´¦ÀíÑ¡ÖÐµÄÎÄ¼þÂ·¾¶
+        // ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Ðµï¿½ï¿½Ä¼ï¿½Â·ï¿½ï¿½
         if (!string.IsNullOrEmpty(selectedFilePath))
         {
             FilePath_UI.text = selectedFilePath;
@@ -36,13 +37,13 @@ public class FileDialog : MonoBehaviour
 
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
-    // WindowsÆ½Ì¨µÄÎÄ¼þ¶Ô»°¿ò
+    // WindowsÆ½Ì¨ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ô»ï¿½ï¿½ï¿½
     [DllImport("Comdlg32.dll", SetLastError = true, CharSet = CharSet.Auto)]
     private static extern bool GetOpenFileName([In, Out] FileDialogWin.OPENFILENAME ofn);
 
     private string OpenWindowsFileDialog(string title, string defaultPath, string extension)
     {
-        //Debug.Log("ÔËÐÐ");
+        //Debug.Log("ï¿½ï¿½ï¿½ï¿½");
         FileDialogWin.OPENFILENAME ofn = new FileDialogWin.OPENFILENAME();
         ofn.structSize = System.Runtime.InteropServices.Marshal.SizeOf(ofn);
         ofn.filter = "G-code Files\0*.gcode\0All Files\0*.*\0\0";
