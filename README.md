@@ -2,7 +2,18 @@
 
 This package is designed to invoke the native Windows folder selection dialog and can be used in both Unity editor and native Windows environments.
 
-## How to install
+## Content
+- [Open FileDialog in Unity](#open-filedialog-in-unity)
+  - [Content](#content)
+  - [⬇️How to install](#️how-to-install)
+    - [Option 1: Package Manager (Unity 2019.3 and higher)](#option-1-package-manager-unity-20193-and-higher)
+    - [Option 2: Package Manager (Manual)](#option-2-package-manager-manual)
+    - [Option 3: Download zip (not recommended)](#option-3-download-zip-not-recommended)
+  - [🛠️How to use](#️how-to-use)
+  - [💡Parameter Description](#parameter-description)
+
+
+## ⬇️How to install
 ### Option 1: Package Manager (Unity 2019.3 and higher)
 1. Open the Unity project and go to ``Window`` > ``Package Manager``.
 2. Click the ``+`` button in the top left corner and select ``Add package from git URL....``
@@ -23,7 +34,7 @@ https://github.com/isNineSun/Unity-Open-Filedialog-in-Windows.git
 ### Option 3: Download zip (not recommended)
 You can click the green code button in the upper right corner of the GitHub homepage and download the zip file. After unzipping, put the FileDialogWin folder in the resource directory.
 
-## How to use
+## 🛠️How to use
 - Add the `FileDialog` component to the gameobject that the script you want to reference the method is mounted on.   
 ![alt text](image.png)    
 - You can simply reference the `OpenFilePanel` function like this:    
@@ -55,7 +66,7 @@ public class test : MonoBehaviour
 
 ```
     
-## Parameter Description
+## 💡Parameter Description
 ```csharp
 //title: It represents the default file name or file path displayed in the file dialog.
 //defaultPath: default path
