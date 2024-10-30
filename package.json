@@ -10,6 +10,15 @@
         "windows file"
     ],
     "category": "Windows-FileDialog",
+    "author": {
+        "name": "Ninesun",
+        "email": "2769762037@qq.com",
+        "url": "https://isninesun.github.io/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/isNineSun/Unity-Open-Filedialog-in-Windows.git"
+    },
     "files": [
         "/LICENSE",
         "/LICENSE.meta",
